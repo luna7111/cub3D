@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/18 18:09:17 by cde-migu       tortolitas       .        */
+/*   Updated: 2025/07/18 18:32:22 by cde-migu       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define PROG_BLOCK 1
 # define FOV 60
 # define TITLE "cub3d" //revisar
-# define WIN_HEIGH 800
-# define WIN_WIDTH 600
+# define WIN_HEIGHT 600
+# define WIN_WIDTH 800
 
 typedef struct s_player
 {
