@@ -8,26 +8,26 @@
 
 NAME		:=	cub3D
 
-SRC			:=	src/main.c\
+SRC			:=	src/main.c
 
 OBJ			:=	$(SRC:%.c=obj/%.o)
 
 CC			:=	cc
 
-CFLAGS		:=	-Wall -Wextra -Werror -Iinclude
+CFLAGS		:=	-Iinclude -Wall -Wextra -Werror
 
-LIBFLAGS	:=	-Lmlx -lmlx -lXext -X11 -lm
+LIBFLAGS	:=	-Lmlx -lmlx -lXext -lX11 -lm
 
 ########################
 
-$(LIBFT)	:=	libft/libft.a
-$(LIBFTDIR)	:=	libft
+LIBFT		:=	libft/libft.a
+LIBFTDIR	:=	libft
 
-$(MLX)		:=	mlx/libmlx.a
-$(MLXDIR)	:=	mlx
+MLX			:=	mlx/libmlx.a
+MLXDIR		:=	mlx
 
-$(GCTRL)	:=	gctrl/garbage_control.a
-$(GCTRLDIR)	:	gctrl
+GCTRL		:=	gctrl/garbage_control.a
+GCTRLDIR	:=	gctrl
 
 ########################
 
@@ -42,8 +42,8 @@ $(LIBFT):
 $(GCTRL):
 	make -C $(GCTRLDIR)
 
-$(NAME): obj $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFLAGS)
+$(NAME): obj $(MLX) $(GCTRL) $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(GCTRL) $(LIBFT) -o $(NAME) $(LIBFLAGS)
 
 obj:
 	mkdir obj
