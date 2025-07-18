@@ -1,5 +1,5 @@
 #
-# Name: Luna del Valle
+# Name: Luna y Carol
 # File: Makefile
 # Created on: Thursday Jul 17, 2025 19:28:48 CEST
 #
@@ -10,7 +10,7 @@ NAME		:=	cub3D
 
 SRC			:=	src/main.c\
 
-OBJ			:=	$(SRC:%.cpp=obj/%.o)
+OBJ			:=	$(SRC:%.c=obj/%.o)
 
 CC			:=	cc
 
@@ -21,7 +21,7 @@ CFLAGS	:=	-Wall -Wextra -Werror -Iinclude
 all: $(NAME)
 
 $(NAME): obj $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 obj:
 	mkdir obj
