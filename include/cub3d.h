@@ -6,13 +6,14 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/18 16:30:02 by cde-migu       tortolitas       .        */
+/*   Updated: 2025/07/18 16:38:00 by cde-migu       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define PROG_BLOCK 1
 # define FOV 60
 
 typedef struct s_player
