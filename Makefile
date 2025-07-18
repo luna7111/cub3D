@@ -14,7 +14,7 @@ OBJ			:=	$(SRC:%.c=obj/%.o)
 
 CC			:=	cc
 
-CFLAGS			:=	-Wall -Wextra -Werror -Iinclude
+CFLAGS		:=	-Wall -Wextra -Werror -Iinclude
 
 ########################
 
