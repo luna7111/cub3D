@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                     +      *     .         */
+/*   cub3d.h                                       *  ___  .  ___       .     */
+/*                                                   (o o)   (o o)  +         */
+/*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
+/*                                                 /--m-m- /--m-m-    +       */
+/*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
+/*   Updated: 2025/07/18 16:30:02 by cde-migu       tortolitas       .        */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# define FOV 60
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	float	dir;
+	int		input;
+}	t_player;
+
+typedef struct s_map
+{
+	char	**grid;
+	int		height;
+	int		width;
+	int		floor_color;
+	int		ceiling_color;
+}	t_map;
+
+typedef struct s_img
+{
+	void*	img;
+	void*	img_addr;
+	int		img_bpp;
+	int		img_l_len;
+	int		img_endian;
+}	t_img;
+
+typedef struct s_game
+{
+	t_map		map;
+	t_player	player;
+	t_gctrl		*gctrl;
+	void		*mlx;
+	void		*win;
+	t_img		base_img;
+	t_img		north;
+	t_img		south;
+	t_img		east;
+	t_img		west;
+}	t_game;
+
+#endif
