@@ -16,12 +16,34 @@ CC			:=	cc
 
 CFLAGS		:=	-Wall -Wextra -Werror -Iinclude
 
+LIBFLAGS	:=	-Lmlx -lmlx -lXext -X11 -lm
+
+########################
+
+$(LIBFT)	:=	libft/libft.a
+$(LIBFTDIR)	:=	libft
+
+$(MLX)		:=	mlx/libmlx.a
+$(MLXDIR)	:=	mlx
+
+$(GCTRL)	:=	gctrl/garbage_control.a
+$(GCTRLDIR)	:	gctrl
+
 ########################
 
 all: $(NAME)
 
+$(MLX):
+	make -C $(MLXDIR)
+
+$(LIBFT):
+	make -C  $(LIBFTDIR)
+
+$(GCTRL):
+	make -C $(GCTRLDIR)
+
 $(NAME): obj $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFLAGS)
 
 obj:
 	mkdir obj
