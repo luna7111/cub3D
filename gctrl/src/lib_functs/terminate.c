@@ -12,14 +12,17 @@
 
 #include <garbage_control.h>
 
-#ifndef	VERBOSE
+#ifndef VERBOSE
+
 void	gctrl_terminate(t_gctrl *gctrl)
 {
 	gctrl_cleanup(gctrl, ALL_BLOCKS);
 	free(gctrl->dump);
 	free(gctrl);
 }
+
 #else
+
 void	gctrl_terminate(t_gctrl *gctrl)
 {
 	gctrl_print_dump(*(gctrl->dump), "Memory that wasn't manually freed:\n");
