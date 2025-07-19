@@ -2,6 +2,10 @@
 cub3d
 cub3D
 
+# editor temp files
+*.swp
+.vscode
+
 # Prerequisites
 *.d
 
