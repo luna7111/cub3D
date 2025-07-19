@@ -12,6 +12,18 @@
 
 #include <cub3d.h>
 
+void    init_graphics(t_game *game)
+{
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, TITLE);
+	game->base_img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	game->base_img.addr = mlx_get_data_addr(game->base_img.img,
+		&game->base_img.bpp, &game->base_img.l_len, &game->base_img.endian);
+	
+	/* yo haría una función para inicializar una textura y pondría cuatro */
+	/* llamadas a esa función dentro de esta :) */ 
+}
+
 t_game	*init_game(t_gctrl *gctrl)
 {
 	t_game	*game;
@@ -34,12 +46,13 @@ t_game	*init_game(t_gctrl *gctrl)
 	game->player.y = 16;
 	game->player.dir = 0;
 
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, TITLE);
-
-	game->base_img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-
-	game->base_img.addr = mlx_get_data_addr(game->base_img.img, &game->base_img.bpp, &game->base_img.l_len, &game->base_img.endian);
+	init_graphics(game);
+	/* he movido estas cosas a la función init_graphics */
+	/* game->mlx = mlx_init(); */
+	/* game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, TITLE); */
+	/* game->base_img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT); */
+	/* game->base_img.addr = mlx_get_data_addr(game->base_img.img, */
+	/*	&game->base_img.bpp, &game->base_img.l_len, &game->base_img.endian); */
 
 	return (game);
 }
@@ -50,7 +63,36 @@ int main(void)
 	t_game	*game;
 
 	gctrl = gctrl_init();
-	game = init_game(gctrl);//habrá que actualizarla con las cosas del parseo bien :)
+	game = init_game(gctrl);
+	/* habrá que actualizarla con las cosas del parseo bien :) */
 	while (1)
 		;
+    (void)game;
 }
+/*                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */                        
+/*                   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */                      
+/*                   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */                      
+/*                   ▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒ */                      
+/*                   ▒▒▒▒▒▒  ░░  ▒▒▒▒▒▒▒▒ */                      
+/*                   ▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒ */                      
+/*                   ▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒ */                      
+/*                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */                        
+/*                   ▓▓▒▒▓▓▒▒▒▒▒▒▒▒▓▓░░ */                        
+/*                 ▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓░░ */                      
+/*                 ▓▓▓▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒░░░░ */                    
+/*                 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░ */                  
+/*               ░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░▒▒░░░░ */                
+/*             ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░▒▒▒▒▒▒▒▒ */              
+/*             ▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▓▓▒▒▒▒░░░░▒▒▒▒▒▒▒▒ */              
+/*             ▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▓▓▓▓▒▒ */            
+/*               ▒▒░░░░░░░░░░░░░░░░░░░░░░░░▓▓▒▒▒▒▓▓ */            
+/*                 ░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓▓▒▒ */            
+/*                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒░░ */            
+/*                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */              
+/*                       ░░░░░░░░░░░░░░░░░░░░░░░░ */              
+/* ▒▒▓▓▒▒▓▓▒▒▓▓▒▒▓▓▒▒▓▓░░▓▓▒▒▓▓▒▒▓▓░░▓▓▒▒▓▓▒▒▓▓▒▒▓▓▒▒▓▓▓▓▒▒▓▓▒▒ */
+/*                       ░░          ░░░░▒▒░░▒▒░░ */              
+/*                                     ░░▒▒░░▒▒░░ */              
+/*                                     ░░▒▒░░▒▒░░ */              
+/*                                     ░░▒▒░░▒▒░░ */              
+/*                                       ▒▒░░▒▒ */                
