@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/18 18:32:22 by cde-migu       tortolitas       .        */
+/*   Updated: 2025/07/23 21:24:49 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_map
 
 typedef struct s_img
 {
+	int		width;
+	int		height;
 	void	*img;
 	char	*addr;
 	int		bpp;
