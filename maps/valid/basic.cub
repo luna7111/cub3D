@@ -1,7 +1,7 @@
-NO ../../texures/T1.xpm
-SO ../../texures/T2.xpm
-WE ../../texures/T3.xpm
-EA ../../texures/T4.xpm
+NO textures/T1.xpm
+SO textures/T2.xpm
+WE textures/T3.xpm
+EA textures/T4.xpm
 
 F 176,11,105
 C 105,176,11
