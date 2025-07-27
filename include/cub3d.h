@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/23 21:24:49 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/27 20:17:05 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include "../gctrl/src/garbage_control.h"
+# include <stdbool.h>
 
 # define PROG_BLOCK 1
 # define FOV 60
@@ -30,6 +31,9 @@ typedef struct s_player
 	float	dir;
 	int		input;
 }	t_player;
+
+# define COLOR_UNSET -1
+# define COLOR_ERROR -2
 
 typedef struct s_map
 {
@@ -49,6 +53,8 @@ typedef struct s_img
 	int		bpp;
 	int		l_len;
 	int		endian;
+    bool     is_set;
+    bool     error;
 }	t_img;
 
 typedef struct s_game
