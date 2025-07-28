@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/28 16:34:00 by luna           tortolitas       .        */
+/*   Updated: 2025/07/28 20:24:45 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdbool.h>
 
 # define PROG_BLOCK 1
+# define MISSING_TEXTURE_XPM 2
+
 # define FOV 60
 # define TITLE "cub3d" //revisar
 # define WIN_HEIGHT 600
@@ -34,6 +36,8 @@ typedef struct s_player
 
 # define COLOR_UNSET -1
 # define COLOR_ERROR -2
+
+# define DEFAULT_COLOR 0x639363
 
 typedef struct s_map
 {
@@ -81,6 +85,8 @@ typedef struct s_file_content
 	int		error;
 }	t_file_content;
 
+int				check_attribute_repetition(char **file_content);
+
 t_file_content	load_file(t_gctrl *gctrl, char *filename);
 
 int				parse_rgb(char *rgb);
@@ -88,5 +94,9 @@ int				parse_rgb(char *rgb);
 char			*get_attribute_value(const char *line);
 
 void			scan_atributes(t_file_content file, t_game *game);
+void			scan_map(t_file_content file, t_game *game);
 
+void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
+
+t_game			*init_game(t_gctrl *gctrl, char *filename);
 #endif
