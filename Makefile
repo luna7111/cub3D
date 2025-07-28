@@ -8,7 +8,10 @@
 
 NAME		:=	cub3D
 
-SRC			:=	src/main.c
+SRC			:=	src/main.c\
+				src/parser/attributes.c\
+				src/parser/attributes_aux.c\
+				src/parser/file_loading.c
 
 OBJ			:=	$(SRC:%.c=obj/%.o)
 
@@ -47,9 +50,9 @@ $(NAME): obj $(MLX) $(GCTRL) $(LIBFT) $(OBJ)
 
 obj:
 	mkdir obj
-	mkdir obj/src
 
 obj/%.o: %.c
+	install -Dv /dev/null $@
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

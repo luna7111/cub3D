@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/27 20:17:05 by luna           tortolitas       .        */
+/*   Updated: 2025/07/28 16:34:00 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_img
 	int		bpp;
 	int		l_len;
 	int		endian;
-    bool     is_set;
-    bool     error;
+	bool	is_set;
+	bool	error;
 }	t_img;
 
 typedef struct s_game
@@ -70,5 +70,23 @@ typedef struct s_game
 	t_img		east;
 	t_img		west;
 }	t_game;
+
+# define INITIAL_CAPACITY 64
+
+typedef struct s_file_content
+{
+	char	**content;
+	size_t	line_number;
+	size_t	capacity;
+	int		error;
+}	t_file_content;
+
+t_file_content	load_file(t_gctrl *gctrl, char *filename);
+
+int				parse_rgb(char *rgb);
+
+char			*get_attribute_value(const char *line);
+
+void			scan_atributes(t_file_content file, t_game *game);
 
 #endif
