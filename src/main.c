@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/07/28 20:44:07 by luna           tortolitas       .        */
+/*   Updated: 2025/07/29 20:15:53 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	debug_texture_dump(t_game *game)
 {
 	int	x;
 	int	y;
+	char *toprint;
 
 	x = 0;
 	y = 0;
@@ -27,10 +28,12 @@ void	debug_texture_dump(t_game *game)
 	{
 		while (x < 258)
 		{
-			if (game->map.grid[(x * game->map.width) / 258][(y * game->map.height) / 258] == '1')
+			if (game->map.grid[(y * game->map.height) / 258][(x * game->map.width) / 258] == TILE_WALL)
 				mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xFFFFFF);
-			if (x * game->map.width / 258 == (int)game->player.x)
-				if (y * game->map.height / 258 == (int)game->player.y)
+			else if (game->map.grid[(y * game->map.height) / 259][(x * game->map.width) / 258] == TILE_FLOOR)
+				mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xAAAAAA);
+			if (x * game->map.width / 258 == (size_t)game->player.x)
+				if (y * game->map.height / 258 == (size_t)game->player.y)
 				mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xFF0000);
 			x++;
 		}
@@ -52,6 +55,9 @@ void	debug_texture_dump(t_game *game)
 		x = 0;
 		y++;
 	}
+	asprintf(&toprint, "Player position: x = %f y = %f Player direction: %f", game->player.x, game->player.y, game->player.dir);
+	mlx_string_put(game->mlx, game->win, 16, 400, 0xFFFFFF, toprint);
+	free(toprint);
 }
 
 int	main(int argn, char **argv)

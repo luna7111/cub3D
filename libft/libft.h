@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                    _.._  .           .     */
-/*   libft.h                                        .' .-'`        *          */
+/*   libft.h                                       *  ___  .  ___       .     */
 /*                                                 /  /       +        *      */
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:49:52 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2025/01/26 18:58:26 by ldel-val          ``                     */
+/*   Updated: 2025/07/29 19:39:59 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	**ft_split(char const *s, char c);
 int		ft_itob(int nb);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int 	ft_str_coincidence(char const *s, int (*f)(char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 int		ft_putchar_fd(char c, int fd);

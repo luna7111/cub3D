@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/07/28 20:22:56 by luna           tortolitas       .        */
+/*   Updated: 2025/07/29 20:46:39 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,8 @@ t_game	*init_game(t_gctrl *gctrl, char *filename)
 	init_graphics(game);
 	parse_file(gctrl, game, filename);
 	check_attributes(game);
+	if (check_map_borders(game) == 0)
+		exit(0);
+	/* safe exit!!1! */
 	return (game);
 }

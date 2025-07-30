@@ -43,6 +43,7 @@ string/ft_strappend.c\
 conversion/ft_itob.c\
 conversion/ft_itoa.c\
 string/ft_strmapi.c\
+string/ft_str_coincidence.c\
 string/ft_striteri.c\
 io/output/ft_putchar_fd.c\
 io/output/ft_putstr_fd.c\

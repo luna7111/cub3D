@@ -20,7 +20,7 @@ OBJ			:=	$(SRC:%.c=obj/%.o)
 
 CC			:=	cc
 
-CFLAGS		:=	-Iinclude -Wall -Wextra -Werror
+CFLAGS		:=	-Iinclude -Wall -Wextra -Werror -g3
 
 LIBFLAGS	:=	-Lmlx -lmlx -lXext -lX11 -lm
 
@@ -62,6 +62,9 @@ obj/%.o: %.c
 
 clean:
 	rm -rf obj
+	make -C $(LIBFTDIR) fclean
+	make -C $(GCTRLDIR) fclean
+	make -C $(MLXDIR) clean
 
 fclean: clean
 	rm -rf $(NAME)

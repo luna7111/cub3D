@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/07/28 20:24:45 by luna           tortolitas       .        */
+/*   Updated: 2025/07/29 20:45:43 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,18 @@ typedef struct s_player
 
 # define DEFAULT_COLOR 0x639363
 
+# define TILE_EMPTY '0'
+# define TILE_FLOOR '1'
+# define TILE_WALL '2'
+
 typedef struct s_map
 {
 	char	**grid;
-	int		height;
-	int		width;
+	size_t	height;
+	size_t	width;
 	int		floor_color;
 	int		ceiling_color;
+    int     error;
 }	t_map;
 
 typedef struct s_img
@@ -95,6 +100,8 @@ char			*get_attribute_value(const char *line);
 
 void			scan_atributes(t_file_content file, t_game *game);
 void			scan_map(t_file_content file, t_game *game);
+
+int				check_map_borders(t_game *game);
 
 void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
 
