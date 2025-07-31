@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/07/31 20:00:18 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/31 20:03:43 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_texture(t_game *game, t_img *texture, const char *texture_name)
 	if (texture->is_set == 0)
 	{
 		printf("%s was not set, using fallback texture.\n", texture_name);
-		texture->is_set == 1;
+		texture->is_set = 1;
 		texture->img = mlx_xpm_to_image(game->mlx, get_missing_texture(game),
 				&texture->width, &texture->height);
 		texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
