@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/07/29 20:15:53 by luna           tortolitas       .        */
+/*   Updated: 2025/07/31 19:41:16 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argn, char **argv)
 	game = init_game(gctrl, argv[1]);
 	debug_texture_dump(game);
 	mlx_loop(game->mlx);
-	gctrl_terminate(gctrl);
+	safe_exit(game);
 }
 /*                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */
 /*                   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */

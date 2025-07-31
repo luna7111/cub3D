@@ -9,6 +9,7 @@
 NAME		:=	cub3D
 
 SRC			:=	src/main.c\
+				src/safe_exit.c\
 				src/init_game/main.c\
 				src/parser/main.c\
 				src/parser/attributes.c\

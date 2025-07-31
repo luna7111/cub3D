@@ -6,7 +6,7 @@
 /*   By: ldel-val <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/31 19:18:59 by ldel-val                      *    .     */
-/*   Updated: 2025/07/31 19:30:49 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/31 19:40:47 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	safe_exit(t_game *game)
 		mlx_destroy_image(game->west.img);
 	if (game->base_img.is_set == 1)
 		mlx_destroy_image(game->base_img.img);
+	gctrl_terminate(game->gctrl);
 }
