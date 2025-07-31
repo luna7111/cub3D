@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 15:19:49 by luna                          *    .     */
-/*   Updated: 2025/07/28 15:25:36 by luna           tortolitas       .        */
+/*   Updated: 2025/07/31 20:22:47 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ t_file_content	load_file(t_gctrl *gctrl, char *filename)
 			sizeof(char *) * file.capacity);
 	file.line_number = 0;
 	file.content[file.line_number] = get_next_line(fd);
-	while (file.content[file.line_number])
+	while (file.content[file.line_number] != NULL)
 	{
+		gctrl_track_ptr(gctrl, file.content[file.line_number], PROG_BLOCK);
 		file.line_number ++;
 		if (file.line_number >= file.capacity)
 			duplicate_capacity(gctrl, &file);

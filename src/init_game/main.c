@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/07/31 20:03:43 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/31 20:18:54 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_graphics(t_game *game)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, TITLE);
 	game->base_img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	game->base_img.is_set = 1;
 	game->base_img.addr = mlx_get_data_addr(game->base_img.img,
 			&game->base_img.bpp, &game->base_img.l_len, &game->base_img.endian);
 }
