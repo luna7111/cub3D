@@ -15,7 +15,7 @@ NAME = garbage_control.a
 # Compiler
 CC = cc
 # Compiler flags
-CFLAGS = -Wall -Wextra -Werror -Isrc -D VERBOSE
+CFLAGS = -Wall -Wextra -Werror -Isrc # -D VERBOSE
 # Archiver
 AR = ar
 # Archiver flags
