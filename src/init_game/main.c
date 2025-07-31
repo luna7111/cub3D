@@ -6,11 +6,27 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/07/31 20:18:54 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/31 20:53:06 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	init_attributes_to_zero(t_game *game)
+{
+	game->north.is_set = 0;
+	game->south.is_set = 0;
+	game->east.is_set = 0;
+	game->west.is_set = 0;
+	game->base_img.is_set = 0;
+	game->north.error = 0;
+	game->south.error = 0;
+	game->east.error = 0;
+	game->west.error = 0;
+	game->base_img.error = 0;
+	game->map.floor_color = COLOR_UNSET;
+	game->map.ceiling_color = COLOR_UNSET;
+}
 
 void	init_graphics(t_game *game)
 {
@@ -47,8 +63,7 @@ void	check_color_attribute(t_game *game, int *atribute,
 	if (*atribute == COLOR_ERROR)
 	{
 		printf("%s: syntax error.\n", atribute_name);
-		/* proper safe exit!!1 */
-		exit (0);
+		safe_exit(game);
 	}
 	(void)game;
 }
@@ -69,8 +84,7 @@ void	check_texture(t_game *game, t_img *texture, const char *texture_name)
 	if (texture->error == 1)
 	{
 		printf("%s: syntax error.\n", texture_name);
-		/* proper safe exit!!! */
-		exit(0);
+		safe_exit(game);
 	}
 }
 
@@ -90,6 +104,7 @@ t_game	*init_game(t_gctrl *gctrl, char *filename)
 
 	game = gctrl_malloc(gctrl, PROG_BLOCK, sizeof(t_game));
 	game->gctrl = gctrl;
+	init_attributes_to_zero(game);
 	init_graphics(game);
 	parse_file(gctrl, game, filename);
 	check_attributes(game);

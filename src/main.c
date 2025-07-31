@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/07/31 20:07:17 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/31 20:40:32 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ void	debug_texture_dump(t_game *game)
 
 	x = 0;
 	y = 0;
-	mlx_put_image_to_window(game->mlx, game->win, game->north.img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->south.img, 128, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->east.img, 256, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->west.img, 384, 0);
+	if (game->north.is_set == 1 && game->north.error == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->north.img, 0, 0);
+	if (game->south.is_set == 1 && game->south.error == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->south.img, 128, 0);
+	if (game->east.is_set == 1 && game->east.error == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->east.img, 256, 0);
+	if (game->west.is_set == 1 && game->west.error == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->west.img, 384, 0);
 	while (y < 258)
 	{
 		while (x < 258)

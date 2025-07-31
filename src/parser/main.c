@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 17:12:00 by luna                          *    .     */
-/*   Updated: 2025/07/28 20:23:46 by luna           tortolitas       .        */
+/*   Updated: 2025/07/31 20:46:13 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	parse_file(t_gctrl *gctrl, t_game *game, char *filename)
 	if (!check_attribute_repetition(file.content))
 	{
 		printf("Error: redefinition of the same attribute.\n");
-		exit (0);
+		safe_exit(game);
 		/* something something safe exit something something :p */
 	}
 	scan_atributes(file, game);

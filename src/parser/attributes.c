@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 15:27:22 by luna                          *    .     */
-/*   Updated: 2025/07/28 16:21:46 by luna           tortolitas       .        */
+/*   Updated: 2025/07/31 20:47:45 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ t_img	get_texture_from_attribute(t_game *game, char *attribute_line)
 	texture.img = mlx_xpm_file_to_image(game->mlx, filename, &texture.width,
 			&texture.height);
 	if (texture.img == NULL)
+	{
+		free(filename);
 		return (texture.error = 1, texture);
+	}
 	texture.addr = mlx_get_data_addr(texture.img, &texture.bpp,
 			&texture.l_len, &texture.endian);
 	free(filename);
@@ -41,21 +44,10 @@ int	get_color_from_attribute(t_game *game, char *attribute_line)
 	return (color);
 }
 
-void	init_attributes_to_zero(t_game *game)
-{
-	game->north.is_set = 0;
-	game->south.is_set = 0;
-	game->east.is_set = 0;
-	game->west.is_set = 0;
-	game->map.floor_color = COLOR_UNSET;
-	game->map.ceiling_color = COLOR_UNSET;
-}
-
 void	scan_atributes(t_file_content file, t_game *game)
 {
 	size_t	i;
 
-	init_attributes_to_zero(game);
 	i = 0;
 	while (i < file.line_number)
 	{
