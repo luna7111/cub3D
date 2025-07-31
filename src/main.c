@@ -6,17 +6,18 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/07/31 19:41:16 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/07/31 19:47:47 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+#include <stdio.h>
 void	debug_texture_dump(t_game *game)
 {
 	int	x;
 	int	y;
-	char *toprint;
+	/* char *toprint; */
 
 	x = 0;
 	y = 0;
@@ -55,9 +56,9 @@ void	debug_texture_dump(t_game *game)
 		x = 0;
 		y++;
 	}
-	asprintf(&toprint, "Player position: x = %f y = %f Player direction: %f", game->player.x, game->player.y, game->player.dir);
-	mlx_string_put(game->mlx, game->win, 16, 400, 0xFFFFFF, toprint);
-	free(toprint);
+	/* asprintf(&toprint, "Player position: x = %f y = %f Player direction: %f", game->player.x, game->player.y, game->player.dir); */
+	/* mlx_string_put(game->mlx, game->win, 16, 400, 0xFFFFFF, toprint); */
+	/* free(toprint); */
 }
 
 int	main(int argn, char **argv)
