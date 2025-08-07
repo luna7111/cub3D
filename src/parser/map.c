@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/08/07 15:50:22 by luna           tortolitas       .        */
+/*   Updated: 2025/08/07 16:47:10 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*get_map_line(t_game *game, char *raw_line)
 		{
 			game->player.x = i;
 			game->player.dir = get_angle_from_tile(raw_line[i]);
-			/* maybe getting the player attribures should be its own function */
+			/* maybe getting the player attributes should be its own function */
 			line[i] = TILE_FLOOR;
 		}
 		else if (raw_line[i] == '1')
@@ -100,7 +100,7 @@ size_t	get_map_dimensions(t_file_content file, t_game *game)
 			width = ft_strlen(file.content[end]);
 		if (ft_str_coincidence(file.content[end], is_player_tile))
 			game->player.y = end - start;
-		/* maybe getting the player attribures should be its own function */
+		/* maybe getting the player attributes should be its own function */
 		end++;
 	}
 	game->map.height = end - start;
