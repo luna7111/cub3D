@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/07 14:23:48 by luna           tortolitas       .        */
+/*   Updated: 2025/08/07 17:05:19 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int				check_map_borders(t_game *game);
 
 void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
 
-void			safe_exit(t_game *game);
+int	          	safe_exit(t_game *game);
 
 t_game			*init_game(t_gctrl *gctrl, char *filename);
 
