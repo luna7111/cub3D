@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/07/29 21:26:48 by luna           tortolitas       .        */
+/*   Updated: 2025/08/07 15:50:22 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*get_map_line(t_game *game, char *raw_line)
 		if (is_player_tile(raw_line[i]))
 		{
 			game->player.x = i;
-			get_angle_from_tile(raw_line[i]);
+			game->player.dir = get_angle_from_tile(raw_line[i]);
 			/* maybe getting the player attribures should be its own function */
 			line[i] = TILE_FLOOR;
 		}
