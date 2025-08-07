@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/07 14:28:05 by luna           tortolitas       .        */
+/*   Updated: 2025/08/07 15:38:19 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int		move_player(t_game *game)
 
 void init_hooks(t_game *game)
 {
-	mlx_hook(game->win, 2, 1L, key_press_hook, game);
+	mlx_do_key_autorepeatoff(game->mlx);
+	mlx_hook(game->win, 2, 1, key_press_hook, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release_hook, game);
 	mlx_loop_hook(game->mlx, move_player, game);
 }

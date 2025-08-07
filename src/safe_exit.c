@@ -6,7 +6,7 @@
 /*   By: ldel-val <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/31 19:18:59 by ldel-val                      *    .     */
-/*   Updated: 2025/07/31 20:56:51 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/07 15:38:07 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	safe_exit(t_game *game)
 {
+	mlx_do_key_autorepeaton(game->mlx);
 	if (game->north.is_set == 1 && game->north.error == 0)
 		mlx_destroy_image(game->mlx, game->north.img);
 	if (game->south.is_set == 1 && game->south.error == 0)
