@@ -6,7 +6,7 @@
 /*   By: ldel-val <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/31 19:18:59 by ldel-val                      *    .     */
-/*   Updated: 2025/08/07 17:04:41 by luna           tortolitas       .        */
+/*   Updated: 2025/08/08 17:14:58 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	safe_exit(t_game *game)
 {
-	mlx_do_key_autorepeaton(game->mlx);
+	/* mlx_do_key_autorepeaton(game->mlx); */
+	/* puede que esto sea innecesario, además es una solución un poco cutre, */
+	/* lo he añadido porque no quiero que se me olvide probar la diferencia en algún */
+	/* PC malillo en el campus pero probablemente no haga falta */
 	if (game->north.is_set == 1 && game->north.error == 0)
 		mlx_destroy_image(game->mlx, game->north.img);
 	if (game->south.is_set == 1 && game->south.error == 0)
