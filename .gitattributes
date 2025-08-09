@@ -1,4 +1,4 @@
-mlx/man/*/* linguist-vendored
-mlx/man/* linguist-vendored
-*.1 linguist-vendored
-*.3 linguist-vendored
+mlx/man/*/* linguist-documentation
+mlx/man/* linguist-documentation
+*.1 linguist-documentation
+*.3 linguist-documentation
