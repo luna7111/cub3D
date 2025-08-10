@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/10 15:45:49 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/10 19:47:06 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "../gctrl/src/garbage_control.h"
 # include <stdbool.h>
+# include <math.h>
 
 # define PROG_BLOCK 1
 # define MISSING_TEXTURE_XPM 2
