@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/08/10 16:15:11 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/10 20:46:23 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	is_line_valid_map_section(const char *line)
 
 int		get_angle_from_tile(char tile)
 {
-	if (tile == 'N')
-		return (0);
 	if (tile == 'E')
-		return (90);
+		return (0);
 	if (tile == 'S')
+		return (90);
+	if (tile == 'W')
 		return (180);
 	return (270);
 }

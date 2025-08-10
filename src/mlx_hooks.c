@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/10 17:52:55 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/10 20:30:43 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int		key_press_hook(int keycode, t_game *game)
 	else if (keycode == K_LEFT)
 		printf("LEFT pressed: %d\n", keycode);
 	else if (keycode == K_RIGHT)
+	{
+		game->player.dir += 30;
 		printf("RIGHT pressed: %d\n", keycode);
+	}
 	else if (keycode == K_W)
 		printf("W pressed: %d\n", keycode);
 	else if (keycode == K_A)
@@ -87,6 +90,11 @@ int		key_release_hook(int keycode, t_game *game)
 int		move_player(t_game *game)
 {
 	(void)game;
+	if (game->player.dir > 360)
+		game->player.dir -= 360;
+	else if (game->player.dir < 0)
+		game->player.dir += 360;
+	draw_frame(game);
 	return (0);
 }
 

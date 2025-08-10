@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/10 19:49:49 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/10 21:09:49 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,23 @@ float	sqr(float number)
 	return (number * number);
 }
 
+bool	check_colission(t_game *game, float x, float y)
+{
+	int rounded_x;
+	int rounded_y;
+
+	rounded_x = (int)x;
+	rounded_y = (int)y;
+
+	if (rounded_x < 0 || rounded_x > (int)game->map.width)
+		return (1);
+	if (rounded_y < 0 || rounded_y > (int)game->map.height)
+		return (1);
+	if (game->map.grid[rounded_y][rounded_x] == TILE_FLOOR)
+		return (0);
+	return (1);
+}
+
 float	cast_column_ray(t_game *game, float ray_angle)
 {
 	float dx;
@@ -85,16 +102,32 @@ float	cast_column_ray(t_game *game, float ray_angle)
 	float y;
 	float distance;
 
-	dx = 1;
+	if (ray_angle > 270 || ray_angle < 90)
+		dx = 1;
+	else
+		dx = -1;
 	dy = tan(deg_to_rad(ray_angle));
 	x = game->player.x;
 	y = game->player.y;
-	while (game->map.grid[(int)y][(int)x] == TILE_FLOOR)
+	if (dx > 0)
 	{
-		x += dx;
-		y += dy;
-		if (x < 0 || y < 0 || x > game->map.width || y > game->map.height)
-			break ;
+		while (!check_colission(game, x, y))
+		{
+			x += dx;
+			y += dy;
+			if (x < 0 || y < 0 || x > game->map.width || y > game->map.height)
+				break ;
+		}
+	}
+	else
+	{
+	while (!check_colission(game, x - 1, y))
+		{
+			x += dx;
+			y += dy;
+			if (x < 0 || y < 0 || x > game->map.width || y > game->map.height)
+				break ;
+		}
 	}
 	distance = sqrt(sqr(x - game->player.x) + sqr(y - game->player.y));
 	return (distance);
@@ -109,15 +142,31 @@ float	cast_row_ray(t_game *game, float ray_angle)
 	float distance;
 
 	dx = cot(deg_to_rad(ray_angle));
-	dy = 1;
+	if (ray_angle < 180 && ray_angle > 0)
+		dy = 1;
+	else
+		dy = -1;
 	x = game->player.x;
 	y = game->player.y;
-	while (game->map.grid[(int)y][(int)x] == TILE_FLOOR)
+	if (dy > 0)
 	{
-		x += dx;
-		y += dy;
-		if (x < 0 || y < 0 || x > game->map.width || y > game->map.height)
-			break ;
+		while (!check_colission(game, x, y))
+		{
+			x += dx;
+			y += dy;
+			if (x < 0 || y < 0 || x > game->map.width || y > game->map.height)
+				break ;
+		}
+	}
+	else
+	{
+		while (!check_colission(game, x, y - 1))
+		{
+			x += dx;
+			y += dy;
+			if (x < 0 || y < 0 || x > game->map.width || y > game->map.height)
+				break ;
+		}
 	}
 	distance = sqrt(sqr(x - game->player.x) + sqr(y - game->player.y));
 	return (distance);
@@ -145,7 +194,7 @@ void	draw_vertical_section(t_game *game, int x, float distance)
 		i++;
 	}
 }
-/* "que vino primero, la polla o la cebolla?" - Said Carol - Michael Scott*/
+/* "que vino primero, la polla o la cebolla?" - Said Carol - Michael Scott */
 
 void	cast_ray(t_game *game, int ray_index, float ray_angle)
 {
@@ -188,7 +237,6 @@ int	main(int argn, char **argv)
 	gctrl = gctrl_init();
 	game = init_game(gctrl, argv[1]);
 	/* debug_texture_dump(game); */
-	draw_frame(game);
 	init_hooks(game);
 	mlx_loop(game->mlx);
 	safe_exit(game);
