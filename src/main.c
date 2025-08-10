@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/10 21:09:49 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 00:38:09 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ float	deg_to_rad(float degrees)
 
 float	cot(float radians)
 {
-	return (cos(radians) / sin(radians));
+	return (cos(radians) / fabs(sin(radians)));
 }
 
 float	sqr(float number)
