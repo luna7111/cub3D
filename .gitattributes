@@ -1,2 +1,4 @@
 *.1 linguist-documentation
 *.3 linguist-documentation
+*.sh linguist-vendored
+*.pl linguist-vendored
