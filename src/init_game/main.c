@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/07/31 20:53:06 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/10 17:35:15 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,9 @@ t_game	*init_game(t_gctrl *gctrl, char *filename)
 	parse_file(gctrl, game, filename);
 	check_attributes(game);
 	if (check_map_borders(game) == 0)
-		exit(0);
-	/* safe exit!!1! */
+	{
+		printf("Error: open map.\n");
+		safe_exit(game);
+	}
 	return (game);
 }

@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/08/07 16:47:10 by luna           tortolitas       .        */
+/*   Updated: 2025/08/10 16:15:11 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*get_map_line(t_game *game, char *raw_line)
 		line[i] = TILE_EMPTY;
 		i++;
 	}
-	line[i] = '\0';
+	line[i] = TILE_EMPTY;
 	return (line);
 }
 
