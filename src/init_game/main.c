@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/08/11 16:04:45 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 20:34:10 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,18 @@ void	check_texture(t_game *game, t_img *texture, const char *texture_name)
 	}
 }
 
+void	check_map_content(t_game *game)
+{
+	if (game->map.height <= 0 || game->map.width <= 0)
+	{
+		printf("Empty map.\n");
+		safe_exit(game);
+	}
+}
+
 void	check_attributes(t_game *game)
 {
+	check_map_content(game);
 	check_color_attribute(game, &game->map.ceiling_color, "Ceiling color");
 	check_color_attribute(game, &game->map.floor_color, "Floor color");
 	check_texture(game, &game->north, "North texture");

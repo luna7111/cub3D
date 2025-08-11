@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 18:17:41 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 21:00:15 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,10 @@ int	main(int argn, char **argv)
 	t_game	*game;
 
 	if (argn != 2)
+	{
+		printf("Error: Wrong number of arguments.\n");
 		return (0);
+	}
 	gctrl = gctrl_init();
 	game = init_game(gctrl, argv[1]);
 	/* debug_texture_dump(game); */

@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/11 17:54:47 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 20:51:15 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,24 @@ int		main_loop(t_game *game)
 
 	if (game->player.input_left == true)
 		game->player.dir -= 0.2;
-	else if (game->player.input_right == true)
+	if (game->player.input_right == true)
 		game->player.dir += 0.2;
 	if (game->player.input_w == true && !check_collision(game, game->player.x + dx, game->player.y + dy))
 	{
 		game->player.x += dx;
 		game->player.y += dy;
 	}
-	else if (game->player.input_s == true && !check_collision(game, game->player.x - dx, game->player.y - dy))
+	if (game->player.input_s == true && !check_collision(game, game->player.x - dx, game->player.y - dy))
 	{
 		game->player.x -= dx;
 		game->player.y -= dy;
 	}
-	else if (game->player.input_a == true && !check_collision(game, game->player.x + dy, game->player.y - dx))
+	if (game->player.input_a == true && !check_collision(game, game->player.x + dy, game->player.y - dx))
 	{
 		game->player.x += dy;
 		game->player.y -= dx;
 	}
-	else if (game->player.input_d == true && !check_collision(game, game->player.x - dy, game->player.y + dx))
+	if (game->player.input_d == true && !check_collision(game, game->player.x - dy, game->player.y + dx))
 	{
 		game->player.x -= dy;
 		game->player.y += dx;

@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/08/10 20:46:23 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 21:03:50 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ char	*get_map_line(t_game *game, char *raw_line)
 			line[i] = TILE_WALL;
 		else if (raw_line[i] == '0')
 			line[i] = TILE_FLOOR;
-		else
+		else if (raw_line[i] == ' ')
 			line[i] = TILE_EMPTY;
+		else
+			return (NULL);
 		i++;
 	}
 	while (i < game->map.width)
@@ -90,7 +92,7 @@ size_t	get_map_dimensions(t_file_content file, t_game *game)
 	size_t	width;
 
 	start = 0;
-	while (!is_line_valid_map_section(file.content[start]))
+	while (file.content[start] != NULL && !is_line_valid_map_section(file.content[start]))
 		start++;
 	end = start;
 	width = 0;
@@ -160,6 +162,11 @@ void	scan_map(t_file_content file, t_game *game)
 	while (i < game->map.height)
 	{
 		game->map.grid[i] = get_map_line(game, file.content[start + i]);
+		if (game->map.grid[i] == NULL)
+		{
+			printf("Error: unexpected character in map\n");
+			safe_exit(game);
+		}
 		i++;
 	}
 	game->map.grid[i] = get_map_line(game, "");

@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 18:00:48 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 20:10:40 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ typedef struct s_file_content
 }	t_file_content;
 
 float           deg_to_rad(float degrees);
+
+int             is_line_valid_map_section(const char *line);
 
 int				check_attribute_repetition(char **file_content);
 
