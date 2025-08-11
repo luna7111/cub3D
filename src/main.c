@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 02:01:24 by luna           tortolitas       .        */
+/*   Updated: 2025/08/11 14:48:13 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ t_collision	cast_row_ray(t_game *game, float dx, float dy)
 
 	if (dy > 0)
 	{
-		collision.direction = SOUTH;
+		collision.direction = NORTH;
 		while (!check_colission(game, x, y))
 		{
 			x += dx;
@@ -153,7 +153,7 @@ t_collision	cast_row_ray(t_game *game, float dx, float dy)
 	}
 	else
 	{
-		collision.direction = NORTH;
+		collision.direction = SOUTH;
 		while (!check_colission(game, x, y - 1))
 		{
 			x += dx;
@@ -184,7 +184,7 @@ t_collision	cast_column_ray(t_game *game, float dx, float dy)
 
 	if (dx > 0)
 	{
-		collision.direction = EAST;
+		collision.direction = WEST;
 		while (!check_colission(game, x, y))
 		{
 			x += dx;
@@ -193,7 +193,7 @@ t_collision	cast_column_ray(t_game *game, float dx, float dy)
 	}
 	else
 	{
-		collision.direction = WEST;
+		collision.direction = EAST;
 		while (!check_colission(game, x - 1, y))
 		{
 			x += dx;
@@ -209,8 +209,10 @@ void	cast_ray(t_game *game, int ray_index, float ray_angle)
 {
 	t_collision	row_collision;
 	t_collision	column_collision;
-	float	dx = cos(deg_to_rad(ray_angle));
-	float	dy = sin(deg_to_rad(ray_angle));
+	float	dx;
+	float	dy;
+
+	dx = cos(deg_to_rad(ray_angle));
 
 	row_collision = cast_row_ray(game, dx, dy);
 	column_collision = cast_column_ray(game, dx, dy);
