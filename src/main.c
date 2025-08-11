@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 15:55:38 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 18:01:12 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ float	sqr(float number)
 	return (number * number);
 }
 
-bool	check_colission(t_game *game, float x, float y)
+bool	check_collision(t_game *game, float x, float y)
 {
 	int rounded_x;
 	int rounded_y;
@@ -98,7 +98,7 @@ void	put_pixel(t_game *game, int x, int y, int color)
 		return ;
 	img = game->base_img;
 	img_addr = img.addr;
-	img_addr += (y * img.l_len + x * (img.bpp / 8));
+	img_addr += y * img.l_len + x * (img.bpp / 8);
 	*(unsigned int *)img_addr = color;
 }
 
@@ -123,11 +123,17 @@ void	draw_vertical_section(t_game *game, int x, t_collision collision)
 	t_img	texture;
 
 	if (collision.direction == NORTH)
+	{
 		texture = game->north;
+		collision.offset = 1 - collision.offset;
+	}
 	else if (collision.direction == SOUTH)
 		texture = game->south;
 	else if (collision.direction == EAST)
+	{
 		texture = game->east;
+		collision.offset = 1 - collision.offset;
+	}
 	else
 		texture = game->west;
 	if (collision.dist <= 0)
@@ -172,7 +178,7 @@ t_collision	cast_row_ray(t_game *game, float dx, float dy)
 	if (dy > 0)
 	{
 		collision.direction = NORTH;
-		while (!check_colission(game, x, y))
+		while (!check_collision(game, x, y))
 		{
 			x += dx;
 			y += dy;
@@ -181,7 +187,7 @@ t_collision	cast_row_ray(t_game *game, float dx, float dy)
 	else
 	{
 		collision.direction = SOUTH;
-		while (!check_colission(game, x, y - 1))
+		while (!check_collision(game, x, y - 1))
 		{
 			x += dx;
 			y += dy;
@@ -213,7 +219,7 @@ t_collision	cast_column_ray(t_game *game, float dx, float dy)
 	if (dx > 0)
 	{
 		collision.direction = WEST;
-		while (!check_colission(game, x, y))
+		while (!check_collision(game, x, y))
 		{
 			x += dx;
 			y += dy;
@@ -222,7 +228,7 @@ t_collision	cast_column_ray(t_game *game, float dx, float dy)
 	else
 	{
 		collision.direction = EAST;
-		while (!check_colission(game, x - 1, y))
+		while (!check_collision(game, x - 1, y))
 		{
 			x += dx;
 			y += dy;
@@ -267,8 +273,8 @@ void	draw_frame(t_game *game)
 		ray_angle = (float)fov_angle + game->player.dir;
 		cast_ray(game, i, ray_angle);
 		i += 1;
-		mlx_put_image_to_window(game->mlx, game->win, game->base_img.img, 0, 0);
 	}
+	mlx_put_image_to_window(game->mlx, game->win, game->base_img.img, 0, 0);
 }
 
 int	main(int argn, char **argv)
