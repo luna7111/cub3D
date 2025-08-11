@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/08/11 21:50:06 by luna           tortolitas       .        */
+/*   Updated: 2025/08/11 22:03:18 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_line_valid_map_section(const char *line)
 	return (0);
 }
 
-int		get_angle_from_tile(char tile)
+int	get_angle_from_tile(char tile)
 {
 	if (tile == 'E')
 		return (0);
@@ -63,14 +63,13 @@ char	*get_map_line(t_game *game, char *raw_line)
 		{
 			game->player.x = i;
 			game->player.dir = get_angle_from_tile(raw_line[i]);
-			/* maybe getting the player attributes should be its own function */
 			line[i] = TILE_FLOOR;
 		}
 		else if (raw_line[i] == '1')
 			line[i] = TILE_WALL;
 		else if (raw_line[i] == '0')
 			line[i] = TILE_FLOOR;
-		else if (raw_line[i] == ' ' || raw_line[i] == '\0' || raw_line[i] == '\n')
+		else if (raw_line[i] == ' ' || raw_line[i] == '\n')
 			line[i] = TILE_EMPTY;
 		else
 			return (NULL);
@@ -92,7 +91,8 @@ size_t	get_map_dimensions(t_file_content file, t_game *game)
 	size_t	width;
 
 	start = 0;
-	while (file.content[start] != NULL && !is_line_valid_map_section(file.content[start]))
+	while (file.content[start] != NULL
+		&& !is_line_valid_map_section(file.content[start]))
 		start++;
 	end = start;
 	width = 0;
@@ -102,7 +102,6 @@ size_t	get_map_dimensions(t_file_content file, t_game *game)
 			width = ft_strlen(file.content[end]);
 		if (ft_str_coincidence(file.content[end], is_player_tile))
 			game->player.y = end - start;
-		/* maybe getting the player attributes should be its own function */
 		end++;
 	}
 	game->map.height = end - start;

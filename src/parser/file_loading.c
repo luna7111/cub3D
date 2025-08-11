@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 15:19:49 by luna                          *    .     */
-/*   Updated: 2025/08/11 21:54:02 by luna           tortolitas       .        */
+/*   Updated: 2025/08/11 22:00:30 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	duplicate_capacity(t_gctrl *gctrl, t_file_content *file)
 
 bool	check_file_name(const char *filename)
 {
-	char *file_extension;
+	char	*file_extension;
 
 	file_extension = ft_strrchr(filename, '.');
 	if (file_extension == NULL)
 		return (false);
 	if (ft_strncmp(file_extension, ".cub", 5))
 		return (false);
-	return(true);
+	return (true);
 }
 
 t_file_content	load_file(t_gctrl *gctrl, char *filename)

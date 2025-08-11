@@ -6,15 +6,15 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 17:12:00 by luna                          *    .     */
-/*   Updated: 2025/08/11 20:40:14 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 22:00:51 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int		player_ocurrences(const char *line)
+int	player_ocurrences(const char *line)
 {
-	int ocurrences;
+	int	ocurrences;
 
 	ocurrences = 0;
 	while (*line != '\n' && *line != '\0')
