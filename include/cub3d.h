@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 01:54:04 by luna           tortolitas       .        */
+/*   Updated: 2025/08/11 16:24:01 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ typedef struct s_player
 	float	x;
 	float	y;
 	float	dir;
-	int		input;
+	bool	input_left;
+	bool	input_right;
+	bool	input_w;
+	bool	input_a;
+	bool	input_s;
+	bool	input_d;
 }	t_player;
 
 # define COLOR_UNSET -1
@@ -105,6 +110,8 @@ typedef struct s_file_content
 	size_t	capacity;
 	int		error;
 }	t_file_content;
+
+float           deg_to_rad(float degrees);
 
 int				check_attribute_repetition(char **file_content);
 

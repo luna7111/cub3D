@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 14:48:13 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 15:55:38 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,23 +89,47 @@ bool	check_colission(t_game *game, float x, float y)
 	return (1);
 }
 
+void	put_pixel(t_game *game, int x, int y, int color)
+{
+	t_img	img;
+	char	*img_addr;
+
+	if (x <  0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
+		return ;
+	img = game->base_img;
+	img_addr = img.addr;
+	img_addr += (y * img.l_len + x * (img.bpp / 8));
+	*(unsigned int *)img_addr = color;
+}
+
+int	map_pixel_from_texture(t_img texture, t_collision collision, float vertical_offset)
+{
+	int color;
+	int position_x;
+	int position_y;
+
+	position_x = texture.width * collision.offset;
+	position_y = texture.height * vertical_offset;
+	color = *(unsigned int *)(texture.addr + (position_y * texture.l_len) + (position_x * (texture.bpp / 8)));
+	return (color);
+}
+
 void	draw_vertical_section(t_game *game, int x, t_collision collision)
 {
-	int	section_size;
-	int start_height;
-	int i;
-	int color;
+	int		section_size;
+	int		start_height;
+	int		i;
+	int		color;
+	t_img	texture;
 
 	if (collision.direction == NORTH)
-		color = 0x005500;
+		texture = game->north;
 	else if (collision.direction == SOUTH)
-		color = 0x005555;
+		texture = game->south;
 	else if (collision.direction == EAST)
-		color = 0x000055;
+		texture = game->east;
 	else
-		color = 0x550000;
-	/* esto es solo para hacer pruebas antes de gestionar las texturas bien */
-
+		texture = game->west;
 	if (collision.dist <= 0)
 		collision.dist = 0.01;
 	section_size = WIN_HEIGHT * 2 / collision.dist;
@@ -114,11 +138,14 @@ void	draw_vertical_section(t_game *game, int x, t_collision collision)
 	while (i < WIN_HEIGHT)
 	{
 		if (i < start_height)
-			mlx_pixel_put(game->mlx, game->win, x, i, game->map.ceiling_color);
+			put_pixel(game, x, i, game->map.ceiling_color);
 		else if (i < start_height + section_size)
-			mlx_pixel_put(game->mlx, game->win, x, i, color);
+		{
+			color = map_pixel_from_texture(texture, collision, (float)(i - start_height) / section_size);
+			put_pixel(game, x, i, color);
+		}
 		else
-			mlx_pixel_put(game->mlx, game->win, x, i, game->map.floor_color);
+			put_pixel(game, x, i, game->map.floor_color);
 		i++;
 	}
 }
@@ -161,6 +188,7 @@ t_collision	cast_row_ray(t_game *game, float dx, float dy)
 		}
 	}
 	collision.dist = sqrt(sqr(x - game->player.x) + sqr(y - game->player.y));
+	collision.offset = x - (int)x;
 	return (collision);
 }
 
@@ -201,6 +229,7 @@ t_collision	cast_column_ray(t_game *game, float dx, float dy)
 		}
 	}
 	collision.dist = sqrt(sqr(x - game->player.x) + sqr(y - game->player.y));
+	collision.offset = y - (int)y;
 	return (collision);
 }
 
@@ -213,6 +242,7 @@ void	cast_ray(t_game *game, int ray_index, float ray_angle)
 	float	dy;
 
 	dx = cos(deg_to_rad(ray_angle));
+	dy = sin(deg_to_rad(ray_angle));
 
 	row_collision = cast_row_ray(game, dx, dy);
 	column_collision = cast_column_ray(game, dx, dy);
@@ -237,6 +267,7 @@ void	draw_frame(t_game *game)
 		ray_angle = (float)fov_angle + game->player.dir;
 		cast_ray(game, i, ray_angle);
 		i += 1;
+		mlx_put_image_to_window(game->mlx, game->win, game->base_img.img, 0, 0);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 20:22:35 by luna                          *    .     */
-/*   Updated: 2025/08/10 17:35:15 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 16:04:45 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ void	init_attributes_to_zero(t_game *game)
 	game->base_img.error = 0;
 	game->map.floor_color = COLOR_UNSET;
 	game->map.ceiling_color = COLOR_UNSET;
+	game->player.input_left = 0;
+	game->player.input_right = 0;
+	game->player.input_w = 0;
+	game->player.input_a = 0;
+	game->player.input_s = 0;
+	game->player.input_d = 0;
 }
 
 void	init_graphics(t_game *game)
