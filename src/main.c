@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 18:01:12 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 18:17:41 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,7 @@ void	cast_ray(t_game *game, int ray_index, float ray_angle)
 {
 	t_collision	row_collision;
 	t_collision	column_collision;
+	t_collision shortest_collision;
 	float	dx;
 	float	dy;
 
@@ -254,9 +255,11 @@ void	cast_ray(t_game *game, int ray_index, float ray_angle)
 	column_collision = cast_column_ray(game, dx, dy);
 
 	if (row_collision.dist > column_collision.dist)
-		draw_vertical_section(game, ray_index, column_collision);
+		shortest_collision = column_collision;
 	else
-		draw_vertical_section(game, ray_index, row_collision);
+		shortest_collision = row_collision;
+	shortest_collision.dist *= cos(deg_to_rad(ray_angle - game->player.dir));
+	draw_vertical_section(game, ray_index, shortest_collision);
 }
 
 void	draw_frame(t_game *game)
