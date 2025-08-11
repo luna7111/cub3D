@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 01:54:04 by luna           tortolitas       .        */
+/*   Updated: 2025/08/11 18:00:48 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ typedef struct s_player
 	float	x;
 	float	y;
 	float	dir;
-	int		input;
+	bool	input_left;
+	bool	input_right;
+	bool	input_w;
+	bool	input_a;
+	bool	input_s;
+	bool	input_d;
 }	t_player;
 
 # define COLOR_UNSET -1
@@ -106,6 +111,8 @@ typedef struct s_file_content
 	int		error;
 }	t_file_content;
 
+float           deg_to_rad(float degrees);
+
 int				check_attribute_repetition(char **file_content);
 
 t_file_content	load_file(t_gctrl *gctrl, char *filename);
@@ -124,6 +131,8 @@ void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
 int	          	safe_exit(t_game *game);
 
 void            draw_frame(t_game *game);
+
+bool            check_collision(t_game *game, float x, float y);
 
 t_game			*init_game(t_gctrl *gctrl, char *filename);
 

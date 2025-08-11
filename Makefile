@@ -22,7 +22,7 @@ OBJ			:=	$(SRC:%.c=obj/%.o)
 
 CC			:=	cc
 
-CFLAGS		:=	-Iinclude -Wall -Wextra -Werror -g3
+CFLAGS		:=	-Iinclude -Wall -Wextra -Werror -O3
 
 LIBFLAGS	:=	-Lmlx -lmlx -lXext -lX11 -lm
 
