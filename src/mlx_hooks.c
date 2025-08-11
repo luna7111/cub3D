@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/11 22:13:12 by luna           tortolitas       .        */
+/*   Updated: 2025/08/11 22:15:16 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	move_player_left(t_game *game)
 	}
 }
 
-void	move_player_left(t_game *game)
+void	move_player_right(t_game *game)
 {
 	float	dx;
 	float	dy;
@@ -137,7 +137,7 @@ int	main_loop(t_game *game)
 	if (game->player.input_a)
 		move_player_left(game);
 	if (game->player.input_d == true)
-		move->move_player_left(game);
+		move_player_right(game);
 	if (game->player.dir > 360)
 		game->player.dir -= 360;
 	else if (game->player.dir < 0)
