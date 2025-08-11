@@ -1,7 +1,7 @@
-NO textures/T1.xpm
-SO textures/T2.xpm
-WE textures/T3.xpm
-EA textures/T4.xpm
+NO textures/portal/T1.xpm
+SO textures/portal/T2.xpm
+WE textures/portal/T3.xpm
+EA textures/portal/T4.xpm
 
 F 176,11,105
 C 105,176,11
