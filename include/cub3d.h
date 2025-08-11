@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/10 20:21:08 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 01:54:04 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ typedef struct s_player
 # define TILE_EMPTY '0'
 # define TILE_FLOOR '1'
 # define TILE_WALL '2'
+
+enum cardinal_point
+{
+    EAST,
+    SOUTH,
+    WEST,
+    NORTH
+};
+
+typedef struct s_collision
+{
+    float dist;
+    enum cardinal_point direction;
+    float offset;
+}   t_collision;
 
 typedef struct s_map
 {
