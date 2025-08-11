@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/11 20:51:15 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 22:13:12 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #define KEY_PRESS_MASK 1L
 #define KEY_RELEASE_MASK 1L<<1
 
-int		key_press_hook(int keycode, t_game *game)
+int	key_press_hook(int keycode, t_game *game)
 {
 	if (keycode == K_LEFT)
 		game->player.input_left = true;
@@ -51,7 +51,7 @@ int		key_press_hook(int keycode, t_game *game)
 	return (0);
 }
 
-int		key_release_hook(int keycode, t_game *game)
+int	key_release_hook(int keycode, t_game *game)
 {
 	if (keycode == K_LEFT)
 		game->player.input_left = false;
@@ -68,35 +68,76 @@ int		key_release_hook(int keycode, t_game *game)
 	return (0);
 }
 
-int		main_loop(t_game *game)
+void	move_player_forward(t_game *game)
 {
-	float dx = cos(deg_to_rad(game->player.dir)) * 0.01;
-	float dy = sin(deg_to_rad(game->player.dir)) * 0.01;
+	float	dx;
+	float	dy;
 
-	if (game->player.input_left == true)
-		game->player.dir -= 0.2;
-	if (game->player.input_right == true)
-		game->player.dir += 0.2;
-	if (game->player.input_w == true && !check_collision(game, game->player.x + dx, game->player.y + dy))
+	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
+	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
+	if (!check_collision(game, game->player.x + dx, game->player.y + dy))
 	{
 		game->player.x += dx;
 		game->player.y += dy;
 	}
-	if (game->player.input_s == true && !check_collision(game, game->player.x - dx, game->player.y - dy))
+}
+
+void	move_player_backwards(t_game *game)
+{
+	float	dx;
+	float	dy;
+
+	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
+	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
+	if (!check_collision(game, game->player.x - dx, game->player.y - dy))
 	{
 		game->player.x -= dx;
 		game->player.y -= dy;
 	}
-	if (game->player.input_a == true && !check_collision(game, game->player.x + dy, game->player.y - dx))
+}
+
+void	move_player_left(t_game *game)
+{
+	float	dx;
+	float	dy;
+
+	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
+	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
+	if (!check_collision(game, game->player.x + dy, game->player.y - dx))
 	{
 		game->player.x += dy;
 		game->player.y -= dx;
 	}
-	if (game->player.input_d == true && !check_collision(game, game->player.x - dy, game->player.y + dx))
+}
+
+void	move_player_left(t_game *game)
+{
+	float	dx;
+	float	dy;
+
+	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
+	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
+	if (!check_collision(game, game->player.x - dy, game->player.y + dx))
 	{
 		game->player.x -= dy;
 		game->player.y += dx;
 	}
+}
+
+int	main_loop(t_game *game)
+{
+	if (game->player.input_left == true)
+		game->player.dir -= 0.2;
+	if (game->player.input_right == true)
+		game->player.dir += 0.2;
+	if (game->player.input_w == true)
+		move_player_forward(game);
+	if (game->player.input_s == true)
+		move_player_backwards(game);
+	if (game->player.input_a)
+		move_player_left(game);
+	if (game->player.input_d == true)
+		move->move_player_left(game);
 	if (game->player.dir > 360)
 		game->player.dir -= 360;
 	else if (game->player.dir < 0)
@@ -105,12 +146,8 @@ int		main_loop(t_game *game)
 	return (0);
 }
 
-void init_hooks(t_game *game)
+void	init_hooks(t_game *game)
 {
-	/* mlx_do_key_autorepeatoff(game->mlx); */
-	/* puede que esto sea innecesario, además es una solución un poco cutre, */
-	/* lo he añadido porque no quiero que se me olvide probar la diferencia en algún */
-	/* PC malillo en el campus pero probablemente no haga falta */
 	mlx_hook(game->win, ON_DESTROY, NO_EVENT_MASK, safe_exit, game);
 	mlx_hook(game->win, ON_KEYDOWN, KEY_PRESS_MASK, key_press_hook, game);
 	mlx_hook(game->win, ON_KEYUP, KEY_RELEASE_MASK, key_release_hook, game);
