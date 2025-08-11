@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 16:35:17 by luna                          *    .     */
-/*   Updated: 2025/08/11 21:03:50 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 21:50:06 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_map_line(t_game *game, char *raw_line)
 			line[i] = TILE_WALL;
 		else if (raw_line[i] == '0')
 			line[i] = TILE_FLOOR;
-		else if (raw_line[i] == ' ')
+		else if (raw_line[i] == ' ' || raw_line[i] == '\0' || raw_line[i] == '\n')
 			line[i] = TILE_EMPTY;
 		else
 			return (NULL);

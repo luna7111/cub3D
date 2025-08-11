@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 15:19:49 by luna                          *    .     */
-/*   Updated: 2025/08/11 20:50:08 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 21:54:02 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	duplicate_capacity(t_gctrl *gctrl, t_file_content *file)
 	}
 	gctrl_free(gctrl, file->content);
 	file->content = resized_content;
+	file->capacity *= 2;
 }
 /* mirar si hacer falta cambiar el tamaño de file capacity */
 
