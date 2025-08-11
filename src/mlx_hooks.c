@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/11 16:31:44 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 17:54:47 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,29 @@ int		key_release_hook(int keycode, t_game *game)
 
 int		main_loop(t_game *game)
 {
-	float dx = cos(deg_to_rad(game->player.dir)) * 0.1;
-	float dy = sin(deg_to_rad(game->player.dir)) * 0.1;
+	float dx = cos(deg_to_rad(game->player.dir)) * 0.01;
+	float dy = sin(deg_to_rad(game->player.dir)) * 0.01;
 
 	if (game->player.input_left == true)
-		game->player.dir --;
+		game->player.dir -= 0.2;
 	else if (game->player.input_right == true)
-		game->player.dir ++;
-	else if (game->player.input_w == true)
+		game->player.dir += 0.2;
+	if (game->player.input_w == true && !check_collision(game, game->player.x + dx, game->player.y + dy))
 	{
 		game->player.x += dx;
 		game->player.y += dy;
 	}
-	else if (game->player.input_s == true)
+	else if (game->player.input_s == true && !check_collision(game, game->player.x - dx, game->player.y - dy))
 	{
 		game->player.x -= dx;
 		game->player.y -= dy;
 	}
-	else if (game->player.input_a == true)
+	else if (game->player.input_a == true && !check_collision(game, game->player.x + dy, game->player.y - dx))
 	{
 		game->player.x += dy;
 		game->player.y -= dx;
 	}
-	else if (game->player.input_d == true)
+	else if (game->player.input_d == true && !check_collision(game, game->player.x - dy, game->player.y + dx))
 	{
 		game->player.x -= dy;
 		game->player.y += dx;

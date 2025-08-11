@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 16:24:01 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/11 18:00:48 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
 int	          	safe_exit(t_game *game);
 
 void            draw_frame(t_game *game);
+
+bool            check_collision(t_game *game, float x, float y);
 
 t_game			*init_game(t_gctrl *gctrl, char *filename);
 
