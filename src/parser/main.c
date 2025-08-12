@@ -3,7 +3,7 @@
 /*                                                     +      *     .         */
 /*   main.c                                        *  ___  .  ___       .     */
 /*                                                   (o o)   (o o)  +         */
-/*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
+/*   By: luna <ldel-val@student.42madrid.com>       (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 17:12:00 by luna                          *    .     */
 /*   Updated: 2025/08/11 22:00:51 by luna           tortolitas       .        */

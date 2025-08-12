@@ -3,7 +3,7 @@
 /*                                                     +      *     .         */
 /*   mlx_hooks.c                                   *  ___  .  ___       .     */
 /*                                                   (o o)   (o o)  +         */
-/*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
+/*   By: luna <ldel-val@student.42madrid.com>       (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
 /*   Updated: 2025/08/12 14:53:09 by ldel-val       tortolitas       .        */

@@ -3,7 +3,7 @@
 /*                                                     +      *     .         */
 /*   aux.c                                         *  ___  .  ___       .     */
 /*                                                   (o o)   (o o)  +         */
-/*   By: ldel-val <marvin@42.fr>                    (  V  ) (  V  )  .        */
+/*   By: ldel-val <ldel-val@student.42madrid.com>   (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/12 14:50:05 by ldel-val                      *    .     */
 /*   Updated: 2025/08/12 14:58:05 by ldel-val       tortolitas       .        */

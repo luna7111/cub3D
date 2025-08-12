@@ -3,10 +3,10 @@
 /*                                                     +      *     .         */
 /*   main.c                                        *  ___  .  ___       .     */
 /*                                                   (o o)   (o o)  +         */
-/*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
+/*   By: cde-migu <cde-migu@student.42madrid.com>   (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/12 15:18:06 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/12 15:52:26 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 

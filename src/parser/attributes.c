@@ -3,7 +3,7 @@
 /*                                                     +      *     .         */
 /*   attributes.c                                  *  ___  .  ___       .     */
 /*                                                   (o o)   (o o)  +         */
-/*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
+/*   By: luna <ldel-val@student.42madrid.com>       (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/28 15:27:22 by luna                          *    .     */
 /*   Updated: 2025/07/31 20:47:45 by ldel-val       tortolitas       .        */

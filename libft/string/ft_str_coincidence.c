@@ -3,7 +3,7 @@
 /*                                                     +      *     .         */
 /*   ft_str_coincidence.c                          *  ___  .  ___       .     */
 /*                                                   (o o)   (o o)  +         */
-/*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
+/*   By: luna <ldel-val@student.42madrid.com>       (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/29 19:29:32 by luna                          *    .     */
 /*   Updated: 2025/08/12 15:51:19 by ldel-val       tortolitas       .        */
