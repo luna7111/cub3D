@@ -1,11 +1,10 @@
-NO textures/kenney/T1.xpm
-SO textures/kenney/T2.xpm
-WE textures/kenney/T3.xpm
-EA textures/kenney/T4.xpm
+NO textures/fractal/T1.xpm
+SO textures/fractal/T2.xpm
+WE textures/fractal/T3.xpm
+EA textures/fractal/T4.xpm
 
-C 151,219,198
-F 83,84,96
-
+C 0,0,0
+F 0,0,0
 1111111111111111
 1000000000000001
 1111100100011001
