@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/11 22:15:16 by luna           tortolitas       .        */
+/*   Updated: 2025/08/12 11:57:50 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 #define NO_EVENT_MASK 0
 #define KEY_PRESS_MASK 1L
-#define KEY_RELEASE_MASK 1L<<1
+#define KEY_RELEASE_MASK 2L
 
 int	key_press_hook(int keycode, t_game *game)
 {
