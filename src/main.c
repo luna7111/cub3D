@@ -6,61 +6,64 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:30:23 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 21:00:15 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/12 00:36:19 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-#include <stdio.h>
-void	debug_texture_dump(t_game *game)
-{
-	int	x;
-	int	y;
+/* void	debug_texture_dump(t_game *game) */
+/* { */
+/* 	int	x; */
+/* 	int	y; */
 
-	x = 0;
-	y = 0;
-	if (game->north.is_set == 1 && game->north.error == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->north.img, 0, 0);
-	if (game->south.is_set == 1 && game->south.error == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->south.img, 128, 0);
-	if (game->east.is_set == 1 && game->east.error == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->east.img, 256, 0);
-	if (game->west.is_set == 1 && game->west.error == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->west.img, 384, 0);
-	while (y < 258)
-	{
-		while (x < 258)
-		{
-			if (game->map.grid[(y * game->map.height) / 258][(x * game->map.width) / 258] == TILE_WALL)
-				mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xFFFFFF);
-			else if (game->map.grid[(y * game->map.height) / 259][(x * game->map.width) / 258] == TILE_FLOOR)
-				mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xAAAAAA);
-			if (x * game->map.width / 258 == (size_t)game->player.x)
-				if (y * game->map.height / 258 == (size_t)game->player.y)
-				mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xFF0000);
-			x++;
-		}
-		y++;
-		x = 0;
-	}
-	x = 0;
-	y = 0;
-	while (y < 64)
-	{
-		while (x < 64)
-		{
-			mlx_pixel_put(game->mlx, game->win, x, 128 + y,
-				game->map.ceiling_color);
-			mlx_pixel_put(game->mlx, game->win, x, 192 + y,
-				game->map.floor_color);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	printf("Player position: x = %f y = %f Player direction: %f\n", game->player.x, game->player.y, game->player.dir);
-}
+/* 	x = 0; */
+/* 	y = 0; */
+/* 	if (game->north.is_set == 1 && game->north.error == 0) */
+/* 		mlx_put_image_to_window(game->mlx, game->win, game->north.img, 0, 0); */
+/* 	if (game->south.is_set == 1 && game->south.error == 0) */
+/*	mlx_put_image_to_window(game->mlx, game->win, game->south.img, 128, 0); */
+/* 	if (game->east.is_set == 1 && game->east.error == 0) */
+/*	mlx_put_image_to_window(game->mlx, game->win, game->east.img, 256, 0); */
+/* 	if (game->west.is_set == 1 && game->west.error == 0) */
+/*	mlx_put_image_to_window(game->mlx, game->win, game->west.img, 384, 0); */
+/* 	while (y < 258) */
+/* 	{ */
+/* 		while (x < 258) */
+/* 		{ */
+/* 			if (game->map.grid[(y * game->map.height) / 258] */
+/*					[(x * game->map.width) / 258] == TILE_WALL) */
+/* 			mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xFFFFFF); */
+/* 			else if (game->map.grid[(y * game->map.height) / 259] */
+/* 					[(x * game->map.width) / 258] == TILE_FLOOR) */
+/* 			mlx_pixel_put(game->mlx, game->win, 128 + x, 128 + y, 0xAAAAAA); */
+/* 			if (x * game->map.width / 258 == (size_t)game->player.x) */
+/* 				if (y * game->map.height / 258 == (size_t)game->player.y) */
+/* 					mlx_pixel_put(game->mlx, game->win, */
+/* 						   	128 + x, 128 + y, 0xFF0000); */
+/* 			x++; */
+/* 		} */
+/* 		y++; */
+/* 		x = 0; */
+/* 	} */
+/* 	x = 0; */
+/* 	y = 0; */
+/* 	while (y < 64) */
+/* 	{ */
+/* 		while (x < 64) */
+/* 		{ */
+/* 			mlx_pixel_put(game->mlx, game->win, x, 128 + y, */
+/* 				game->map.ceiling_color); */
+/* 			mlx_pixel_put(game->mlx, game->win, x, 192 + y, */
+/* 				game->map.floor_color); */
+/* 			x++; */
+/* 		} */
+/* 		x = 0; */
+/* 		y++; */
+/* 	} */
+/* 	printf("Player position: x = %f y = %f Player direction: %f\n", */
+/* 			game->player.x, game->player.y, game->player.dir); */
+/* } */
 
 float	deg_to_rad(float degrees)
 {
@@ -74,12 +77,11 @@ float	sqr(float number)
 
 bool	check_collision(t_game *game, float x, float y)
 {
-	int rounded_x;
-	int rounded_y;
+	int	rounded_x;
+	int	rounded_y;
 
 	rounded_x = (int)x;
 	rounded_y = (int)y;
-
 	if (rounded_x < 0 || rounded_x > (int)game->map.width)
 		return (1);
 	if (rounded_y < 0 || rounded_y > (int)game->map.height)
@@ -94,7 +96,7 @@ void	put_pixel(t_game *game, int x, int y, int color)
 	t_img	img;
 	char	*img_addr;
 
-	if (x <  0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
+	if (x < 0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
 		return ;
 	img = game->base_img;
 	img_addr = img.addr;
@@ -102,15 +104,17 @@ void	put_pixel(t_game *game, int x, int y, int color)
 	*(unsigned int *)img_addr = color;
 }
 
-int	map_pixel_from_texture(t_img texture, t_collision collision, float vertical_offset)
+int	map_pixel_from_texture(t_img texture,
+		t_collision collision, float vertical_offset)
 {
-	int color;
-	int position_x;
-	int position_y;
+	int	color;
+	int	position_x;
+	int	position_y;
 
 	position_x = texture.width * collision.offset;
 	position_y = texture.height * vertical_offset;
-	color = *(unsigned int *)(texture.addr + (position_y * texture.l_len) + (position_x * (texture.bpp / 8)));
+	color = *(unsigned int *)(texture.addr + (position_y * texture.l_len)
+			+ (position_x * (texture.bpp / 8)));
 	return (color);
 }
 
@@ -147,7 +151,8 @@ void	draw_vertical_section(t_game *game, int x, t_collision collision)
 			put_pixel(game, x, i, game->map.ceiling_color);
 		else if (i < start_height + section_size)
 		{
-			color = map_pixel_from_texture(texture, collision, (float)(i - start_height) / section_size);
+			color = map_pixel_from_texture(texture, collision,
+					(float)(i - start_height) / section_size);
 			put_pixel(game, x, i, color);
 		}
 		else
@@ -159,22 +164,20 @@ void	draw_vertical_section(t_game *game, int x, t_collision collision)
 
 t_collision	cast_row_ray(t_game *game, float dx, float dy)
 {
-	t_collision collision;
+	t_collision	collision;
 	float		x;
 	float		y;
 
 	dx = dx / fabs(dy);
 	if (dy > 0)
 		dy = 1;
-	else 
+	else
 		dy = -1;
-
 	if (dy > 0)
 		y = (int)game->player.y + 1;
 	else
 		y = (int)game->player.y;
 	x = game->player.x + (dx * fabs(game->player.y - y));
-
 	if (dy > 0)
 	{
 		collision.direction = NORTH;
@@ -200,22 +203,20 @@ t_collision	cast_row_ray(t_game *game, float dx, float dy)
 
 t_collision	cast_column_ray(t_game *game, float dx, float dy)
 {
-	t_collision collision;
+	t_collision	collision;
 	float		x;
 	float		y;
 
 	dy = dy / fabs(dx);
 	if (dx > 0)
 		dx = 1;
-	else 
+	else
 		dx = -1;
-
 	if (dx > 0)
 		x = (int)game->player.x + 1;
 	else
 		x = (int)game->player.x;
 	y = game->player.y + (dy * fabs(game->player.x - x));
-
 	if (dx > 0)
 	{
 		collision.direction = WEST;
@@ -239,21 +240,18 @@ t_collision	cast_column_ray(t_game *game, float dx, float dy)
 	return (collision);
 }
 
-
 void	cast_ray(t_game *game, int ray_index, float ray_angle)
 {
 	t_collision	row_collision;
 	t_collision	column_collision;
-	t_collision shortest_collision;
-	float	dx;
-	float	dy;
+	t_collision	shortest_collision;
+	float		dx;
+	float		dy;
 
 	dx = cos(deg_to_rad(ray_angle));
 	dy = sin(deg_to_rad(ray_angle));
-
 	row_collision = cast_row_ray(game, dx, dy);
 	column_collision = cast_column_ray(game, dx, dy);
-
 	if (row_collision.dist > column_collision.dist)
 		shortest_collision = column_collision;
 	else
@@ -269,7 +267,7 @@ void	draw_frame(t_game *game)
 	float	ray_angle;
 
 	i = 0;
-	fov_angle = - FOV / 2;
+	fov_angle = -FOV / 2;
 	while (i < WIN_WIDTH)
 	{
 		fov_angle = (float)(-FOV / 2.0) + (((float)FOV / WIN_WIDTH) * i);
@@ -292,7 +290,6 @@ int	main(int argn, char **argv)
 	}
 	gctrl = gctrl_init();
 	game = init_game(gctrl, argv[1]);
-	/* debug_texture_dump(game); */
 	init_hooks(game);
 	mlx_loop(game->mlx);
 	safe_exit(game);

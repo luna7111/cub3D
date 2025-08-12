@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/11 20:10:40 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/12 00:40:04 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,20 @@ typedef struct s_player
 # define TILE_FLOOR '1'
 # define TILE_WALL '2'
 
-enum cardinal_point
+enum e_cardinal_point
 {
-    EAST,
-    SOUTH,
-    WEST,
-    NORTH
+	EAST,
+	SOUTH,
+	WEST,
+	NORTH
 };
 
 typedef struct s_collision
 {
-    float dist;
-    enum cardinal_point direction;
-    float offset;
-}   t_collision;
+	float					dist;
+	enum e_cardinal_point	direction;
+	float					offset;
+}	t_collision;
 
 typedef struct s_map
 {
@@ -71,7 +71,7 @@ typedef struct s_map
 	size_t	width;
 	int		floor_color;
 	int		ceiling_color;
-    int     error;
+	int		error;
 }	t_map;
 
 typedef struct s_img
@@ -111,9 +111,9 @@ typedef struct s_file_content
 	int		error;
 }	t_file_content;
 
-float           deg_to_rad(float degrees);
+float			deg_to_rad(float degrees);
 
-int             is_line_valid_map_section(const char *line);
+int				is_line_valid_map_section(const char *line);
 
 int				check_attribute_repetition(char **file_content);
 
@@ -130,13 +130,13 @@ int				check_map_borders(t_game *game);
 
 void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
 
-int	          	safe_exit(t_game *game);
+int				safe_exit(t_game *game);
 
-void            draw_frame(t_game *game);
+void			draw_frame(t_game *game);
 
-bool            check_collision(t_game *game, float x, float y);
+bool			check_collision(t_game *game, float x, float y);
 
 t_game			*init_game(t_gctrl *gctrl, char *filename);
 
-void            init_hooks(t_game *game);
+void			init_hooks(t_game *game);
 #endif
