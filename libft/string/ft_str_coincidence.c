@@ -6,13 +6,13 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/29 19:29:32 by luna                          *    .     */
-/*   Updated: 2025/07/29 19:31:52 by luna           tortolitas       .        */
+/*   Updated: 2025/08/12 15:51:19 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int		ft_str_coincidence(char const *s, int (*f)(char))
+int	ft_str_coincidence(char const *s, int (*f)(char))
 {
 	int	i;
 
