@@ -6,7 +6,7 @@
 /*   By: luna <marvin@42.fr>                        (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/07 13:24:39 by luna                          *    .     */
-/*   Updated: 2025/08/12 11:57:50 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/12 14:53:09 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,62 +66,6 @@ int	key_release_hook(int keycode, t_game *game)
 	else if (keycode == K_D)
 		game->player.input_d = false;
 	return (0);
-}
-
-void	move_player_forward(t_game *game)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
-	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
-	if (!check_collision(game, game->player.x + dx, game->player.y + dy))
-	{
-		game->player.x += dx;
-		game->player.y += dy;
-	}
-}
-
-void	move_player_backwards(t_game *game)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
-	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
-	if (!check_collision(game, game->player.x - dx, game->player.y - dy))
-	{
-		game->player.x -= dx;
-		game->player.y -= dy;
-	}
-}
-
-void	move_player_left(t_game *game)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
-	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
-	if (!check_collision(game, game->player.x + dy, game->player.y - dx))
-	{
-		game->player.x += dy;
-		game->player.y -= dx;
-	}
-}
-
-void	move_player_right(t_game *game)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos(deg_to_rad(game->player.dir)) * 0.01;
-	dy = sin(deg_to_rad(game->player.dir)) * 0.01;
-	if (!check_collision(game, game->player.x - dy, game->player.y + dx))
-	{
-		game->player.x -= dy;
-		game->player.y += dx;
-	}
 }
 
 int	main_loop(t_game *game)

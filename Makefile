@@ -9,14 +9,23 @@
 NAME		:=	cub3D
 
 SRC			:=	src/main.c\
+				src/aux.c\
+				src/player_movement.c\
 				src/mlx_hooks.c\
 				src/safe_exit.c\
 				src/init_game/main.c\
+				src/init_game/graphics.c\
+				src/init_game/checks.c\
 				src/parser/main.c\
 				src/parser/attributes.c\
 				src/parser/attributes_aux.c\
 				src/parser/file_loading.c\
-				src/parser/map.c
+				src/parser/map.c\
+				src/parser/map_aux.c\
+				src/raycaster/main.c\
+				src/raycaster/cast_direction_ray.c\
+				src/raycaster/drawing.c\
+				src/raycaster/textures.c
 
 OBJ			:=	$(SRC:%.c=obj/%.o)
 
@@ -58,6 +67,7 @@ obj:
 	mkdir obj/src
 	mkdir obj/src/parser
 	mkdir obj/src/init_game
+	mkdir obj/src/raycaster
 
 obj/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

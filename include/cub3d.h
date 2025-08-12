@@ -6,7 +6,7 @@
 /*   By: cde-migu <marvin@42.fr>                    (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/07/18 15:46:25 by cde-migu                      *    .     */
-/*   Updated: 2025/08/12 11:49:28 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/12 15:46:02 by ldel-val       tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef enum e_cardinal_point
 	SOUTH,
 	WEST,
 	NORTH
-} t_cardinal_point;
+}	t_cardinal_point;
 
 typedef struct s_collision
 {
@@ -113,10 +113,26 @@ typedef struct s_file_content
 }	t_file_content;
 
 float			deg_to_rad(float degrees);
+float			sqr(float number);
+bool			check_collision(t_game *game, float x, float y);
+
+void			move_player_forward(t_game *game);
+void			move_player_backwards(t_game *game);
+void			move_player_left(t_game *game);
+void			move_player_right(t_game *game);
 
 int				is_line_valid_map_section(const char *line);
+int				get_angle_from_tile(char tile);
+int				is_player_tile(char tile);
+char			char_to_tile(t_game *game, char c, int i);
 
 int				check_attribute_repetition(char **file_content);
+int				check_map_borders(t_game *game);
+
+void			check_attributes(t_game *game);
+void			init_graphics(t_game *game);
+
+char			**get_missing_texture(t_game *game);
 
 t_file_content	load_file(t_gctrl *gctrl, char *filename);
 
@@ -127,15 +143,22 @@ char			*get_attribute_value(const char *line);
 void			scan_atributes(t_file_content file, t_game *game);
 void			scan_map(t_file_content file, t_game *game);
 
-int				check_map_borders(t_game *game);
-
 void			parse_file(t_gctrl *gctrl, t_game *game, char *filename);
 
 int				safe_exit(t_game *game);
 
-void			draw_frame(t_game *game);
+t_img			set_texture(t_game *game, t_cardinal_point direction);
+int				map_pixel_from_texture(t_img texture, \
+					t_collision collision, float vertical_offset);
 
-bool			check_collision(t_game *game, float x, float y);
+void			draw_frame(t_game *game);
+void			draw_vertical_section(t_game *game, \
+					int ray_index, t_collision shortest_collision);
+
+t_collision		cast_row_ray_down(t_game *game, float dx, float dy);
+t_collision		cast_row_ray_up(t_game *game, float dx, float dy);
+t_collision		cast_column_ray_right(t_game *game, float dx, float dy);
+t_collision		cast_column_ray_left(t_game *game, float dx, float dy);
 
 t_game			*init_game(t_gctrl *gctrl, char *filename);
 
