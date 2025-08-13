@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>   (  V  ) (  V  )  .        */
 /*                                                 /--m-m- /--m-m-    +       */
 /*   Created: 2025/08/12 15:17:05 by ldel-val                      *    .     */
-/*   Updated: 2025/08/12 15:18:09 by ldel-val       tortolitas       .        */
+/*   Updated: 2025/08/13 14:04:12 by luna           tortolitas       .        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	draw_vertical_section(t_game *game, int x, t_collision collision)
 
 	if (collision.direction == NORTH || collision.direction == EAST)
 		collision.offset = 1 - collision.offset;
+	if (collision.dist == 0)
+		collision.dist = 0.0001;
 	texture = set_texture(game, collision.direction);
 	section_size = WIN_HEIGHT * 2 / collision.dist;
 	start_height = (WIN_HEIGHT - section_size) / 2;
