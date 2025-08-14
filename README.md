@@ -60,5 +60,7 @@ To run the program execute the binary and use a valid .cub map as an argument, s
 
 
 ---
-Made with love by [caroldmg](https://github.com/caroldmg) and [luna7111](https://github.com/luna7111)
+
 <img width="1600" height="739" alt="image" src="https://github.com/user-attachments/assets/4589fd88-b4a0-45fa-8062-69dd165ec574" />
+
+Made with love by [caroldmg](https://github.com/caroldmg) and [luna7111](https://github.com/luna7111) <3
