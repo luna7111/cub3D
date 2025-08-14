@@ -16,3 +16,32 @@ The program renders a real-time 3D representation of a 2D map defined in a text-
 
 <img width="900" height=auto alt="image" src="https://github.com/user-attachments/assets/db4e2017-62f8-49c5-8a8b-4d6a28ae7c4a" />
 
+</br>
+</br>
+
+Map info is contained in .cub files which contains texture paths for each wall orientation, RGB colors for floor and ceiling and a 2D map layout using ASCII characters.
+
+## Building
+
+To compile the project yourself simply clone the repository and run make inside the root directory of the repository.
+
+```
+git clone https://github.com/yourusername/cub3d.git
+cd cub3d
+make
+```
+
+> [!NOTE]
+> This project depends on [MiniLibX](https://github.com/42paris/minilibx-linux), which requires the following system requirements:
+>
+> - MinilibX only supports TrueColor visual type (8,15,16,24 or 32 bits depth)
+> - gcc
+> - make
+> - X11 include files (package xorg)
+> - XShm extension must be present (package libxext-dev)
+> - Utility functions from BSD systems - development files (package libbsd-dev)
+> - **e.g. sudo apt-get install gcc make xorg libxext-dev libbsd-dev (Debian/Ubuntu)**
+
+## Running
+
+To run the program execute the binary and use a valid .cub map as an argument, some test maps are listed on the maps/valid/ directory, but feel free to create your own, be creative!
