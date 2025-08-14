@@ -59,4 +59,6 @@ To run the program execute the binary and use a valid .cub map as an argument, s
 ![raycast-ray](https://github.com/user-attachments/assets/4eb032f4-02ab-4c94-9c68-c4f387014c34)
 
 
+---
+Made with love by [caroldmg](https://github.com/caroldmg) and [luna7111](https://github.com/luna7111)
 <img width="1600" height="739" alt="image" src="https://github.com/user-attachments/assets/4589fd88-b4a0-45fa-8062-69dd165ec574" />
