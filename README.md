@@ -26,7 +26,7 @@ Map info is contained in .cub files which contains texture paths for each wall o
 To compile the project yourself simply clone the repository and run make inside the root directory of the repository.
 
 ```
-git clone https://github.com/yourusername/cub3d.git
+git clone https://github.com/luna7111/turtledove-RC
 cd cub3d
 make
 ```
