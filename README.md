@@ -1,6 +1,6 @@
-# cub3D
+# Turtledove-RC
 
-Cub3D is a lightweight ray-casting engine that renders 3D enviroments from 2D text based-maps, similar to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D#Development)'s.
+Turtledove- RC is a lightweight ray-casting engine that renders 3D enviroments from 2D text based-maps, similar to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D#Development)'s.
 
 ## Overview
 
@@ -51,3 +51,8 @@ To run the program execute the binary and use a valid .cub map as an argument, s
 ```
 > [!TIP]
 > Use the WASD keys to move around the map. Use the left and right arrow keys to rotate the camera.
+
+## Section in progress...
+<img width="512" height="512" alt="sweep image" src="https://github.com/user-attachments/assets/c4be51ca-ac70-4d21-b5cf-f62d1e5ceed3" />
+
+![raycast-ray](https://github.com/user-attachments/assets/4eb032f4-02ab-4c94-9c68-c4f387014c34)
