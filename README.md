@@ -52,7 +52,11 @@ To run the program execute the binary and use a valid .cub map as an argument, s
 > [!TIP]
 > Use the WASD keys to move around the map. Use the left and right arrow keys to rotate the camera.
 
+
 ## Section in progress...
 <img width="512" height="512" alt="sweep image" src="https://github.com/user-attachments/assets/c4be51ca-ac70-4d21-b5cf-f62d1e5ceed3" />
 
 ![raycast-ray](https://github.com/user-attachments/assets/4eb032f4-02ab-4c94-9c68-c4f387014c34)
+
+
+<img width="1600" height="739" alt="image" src="https://github.com/user-attachments/assets/4589fd88-b4a0-45fa-8062-69dd165ec574" />
