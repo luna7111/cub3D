@@ -45,3 +45,9 @@ make
 ## Running
 
 To run the program execute the binary and use a valid .cub map as an argument, some test maps are listed on the maps/valid/ directory, but feel free to create your own, be creative!
+
+```
+./cub3D maps/valid/example.cub
+```
+> [!TIP]
+> Use the WASD keys to move around the map. Use the left and right arrow keys to rotate the camera.
