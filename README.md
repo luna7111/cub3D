@@ -57,7 +57,16 @@ To run the program execute the binary and use a valid .cub map as an argument, s
 
 For each frame, walls are scanned from left to right across the player's field of view by casting one ray per vertical screen column.
 
+</br>
+
 <img width="512" height="512" alt="sweep image" src="https://github.com/user-attachments/assets/c4be51ca-ac70-4d21-b5cf-f62d1e5ceed3" />
+
+</br>
+</br>
+
+To avoid iterating over a large number of small steps along the ray's path, we used a Digital Differential Analyzer (DDA) algorithm to progress from cell to cell in discrete steps rather than continuous increments. It calculates the distance to the next grid boundary along both the X and Y axes independently, and uses the smallest one of them.
+
+</br>
 
 ![raycast-ray](https://github.com/user-attachments/assets/4eb032f4-02ab-4c94-9c68-c4f387014c34)
 
