@@ -53,7 +53,10 @@ To run the program execute the binary and use a valid .cub map as an argument, s
 > Use the WASD keys to move around the map. Use the left and right arrow keys to rotate the camera.
 
 
-## Section in progress...
+## The ray-casting algorithm
+
+For each frame, walls are scanned from left to right across the player's field of view by casting one ray per vertical screen column.
+
 <img width="512" height="512" alt="sweep image" src="https://github.com/user-attachments/assets/c4be51ca-ac70-4d21-b5cf-f62d1e5ceed3" />
 
 ![raycast-ray](https://github.com/user-attachments/assets/4eb032f4-02ab-4c94-9c68-c4f387014c34)
