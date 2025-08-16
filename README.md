@@ -4,7 +4,7 @@ Turtledove-RC is a lightweight ray-casting engine that renders 3D enviroments fr
 
 ## Overview
 
-The program renders a real-time 3D representation of a 2D map defined in a text-based input file. You can move freely through the environment, with solid walls and basic collision detection.
+The program renders a real-time 3D representation of a 2D map defined in a text-based input file. You can move freely through an environment with solid walls.
 
 </br>
 </br>
