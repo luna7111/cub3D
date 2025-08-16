@@ -1,6 +1,6 @@
 # Turtledove-RC
 
-Turtledove- RC is a lightweight ray-casting engine that renders 3D enviroments from 2D text based-maps, similar to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D#Development)'s.
+Turtledove-RC is a lightweight ray-casting engine that renders 3D enviroments from 2D text based-maps, similar to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D#Development)'s.
 
 ## Overview
 
